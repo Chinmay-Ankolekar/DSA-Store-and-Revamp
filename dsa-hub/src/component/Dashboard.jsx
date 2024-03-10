@@ -11,6 +11,7 @@ import { db } from "../config/firebase";
 import { useState } from "react";
 import AddQuestions from "./AddQuestions";
 import GetAllQuestions from "./GetAllQuestions";
+import AllTopics from "./AllTopics";
 
 const Dashboard = ({ user }) => {
  let navigate = useNavigate();
@@ -30,6 +31,7 @@ const Dashboard = ({ user }) => {
       <br />
       <AddQuestions user={user} />
       <GetAllQuestions user={user} />
+      <AllTopics user={user}/>
     </div>
   );
 };

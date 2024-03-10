@@ -27,13 +27,6 @@ const Login = ({ user }) => {
       alert(error.message);
     }
   };
-  const signOutUser = async () => {
-    try {
-      await signOut(auth);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   const signInWithGoogle = async () => {
     try {

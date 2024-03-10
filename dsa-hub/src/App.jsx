@@ -4,6 +4,7 @@ import Signup from './auth/Signup'
 import Login from './auth/Login'
 import Dashboard from './component/Dashboard'
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import GetQuestionsByTopic from './component/GetQuestionsByTopic'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ function App() {
         {user ? (
           <>
             <Route path={'/dashboard'} element={<Dashboard user={user} />} />
+            <Route path={'/topics/:topic'} element={<GetQuestionsByTopic user={user} />} />
           </>
         ) : (
           <>

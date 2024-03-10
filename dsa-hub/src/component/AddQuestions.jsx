@@ -58,9 +58,9 @@ const AddQuestions = ({ user }) => {
       />
       <br />
       <select id="difficulty" value={difficulty} onChange={(e) => {setDifficulty(e.target.value)}}>
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="difficult">Difficult</option>
+        <option value="Easy">Easy</option>
+        <option value="Medium">Medium</option>
+        <option value="Hard">Hard</option>
       </select>
       <button onClick={addQuestion}>Submit</button>
     </div>

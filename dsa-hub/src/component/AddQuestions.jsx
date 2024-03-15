@@ -26,11 +26,12 @@ const AddQuestions = ({ user }) => {
         difficulty: difficulty,
       });
       console.log("Document written with ID: ", docRef.id);
-      window.location.reload();
+      // window.location.reload();
     } catch (e) {
       console.error("Error adding document: ", e);
     }
   };
+  
 
   return (
     <div>
@@ -47,6 +48,7 @@ const AddQuestions = ({ user }) => {
         type="text"
         className="border"
         placeholder="Enter your question"
+        value={questions}
         onChange={(e) => setQuestions(e.target.value)}
       />
       <br />
@@ -54,10 +56,18 @@ const AddQuestions = ({ user }) => {
         type="text"
         className="border"
         placeholder="Enter the link"
+        value={Link}
         onChange={(e) => setLink(e.target.value)}
       />
       <br />
-      <select id="difficulty" value={difficulty} onChange={(e) => {setDifficulty(e.target.value)}}>
+      <select
+        id="difficulty"
+        value={difficulty}
+        
+        onChange={(e) => {
+          setDifficulty(e.target.value);
+        }}
+      >
         <option value="Easy">Easy</option>
         <option value="Medium">Medium</option>
         <option value="Hard">Hard</option>

@@ -6,6 +6,7 @@ import {
   query,
   deleteDoc,
   doc,
+  onSnapshot,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useNavigate, Link } from "react-router-dom";
@@ -35,26 +36,35 @@ const GetAllQuestions = ({ user }) => {
 
   useEffect(() => {
     getQuestions();
+
+    // Subscribe to real-time updates
+    const unsubscribe = onSnapshot(
+      query(DsaRef, where("email", "==", userEmail)),
+      (snapshot) => {
+        const updatedQuestions = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setQuestions(updatedQuestions);
+      }
+    );
+
+    return () => unsubscribe();
   }, []);
 
   const handleDelete = async (id) => {
     try {
       const DsaDoc = doc(db, "dsa", id);
       await deleteDoc(DsaDoc);
-      window.location.reload();
     } catch (error) {
       console.log(error.message);
     }
   };
 
-  const handleEdit = (id) => {
-    // Implement your edit logic here
-    console.log(`Edit question with id ${id}`);
-  };
 
   return (
     <>
-      <div>
+      {/* <div>
         <h1>All Questions {questions.length}</h1>
         <table>
           <thead>
@@ -90,7 +100,7 @@ const GetAllQuestions = ({ user }) => {
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
 
       <div class="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
         <div class="flex items-center justify-between pb-6">

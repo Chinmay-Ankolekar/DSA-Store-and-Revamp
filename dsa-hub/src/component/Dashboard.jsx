@@ -29,9 +29,9 @@ const Dashboard = ({ user }) => {
       <h1>Dashboard</h1>
       <button onClick={signOutUser}>Logout</button>
       <br />
-      <AddQuestions user={user} />
+      {/* <AddQuestions user={user} /> */}
       <GetAllQuestions user={user} />
-      <AllTopics user={user}/>
+      {/* <AllTopics user={user}/> */}
     </div>
   );
 };

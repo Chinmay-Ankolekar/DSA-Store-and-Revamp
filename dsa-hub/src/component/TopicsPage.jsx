@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 
-const AllTopics = ({ user }) => {
+const TopicsPage = ({ user }) => {
   const [questions, setQuestions] = useState([]);
   const navigate = useNavigate();
   const userEmail = user.auth.currentUser.email;
@@ -56,24 +56,24 @@ const AllTopics = ({ user }) => {
   }, {});
 
   return (
-    <div>
-      <h1>All Topics</h1>
-      <div>
-        {Object.entries(topicCounts)
-          .sort()
-          .map(([topic, count]) => (
-            <button
-              key={topic}
-              onClick={() => {
-                navigate(`/topics/${topic}`);
-              }}
-            >
-              {topic} ({count})
-            </button>
-          ))}
+    <div className="container mx-auto ">
+      <h1 className="text-2xl font-bold ">Topics</h1>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        {Object.entries(topicCounts).map(([topic, count], index) => (
+          <button
+            key={index}
+            onClick={() => {
+              navigate(`/topics/${topic}`);
+            }}
+            className="flex flex-col items-center justify-center h-24 p-2 bg-white shadow-md rounded-lg hover:shadow-lg"
+          >
+            <p className="font-medium text-gray-800">{topic}</p>
+            <p className="text-sm text-gray-600">Total: {count}</p>
+          </button>
+        ))}
       </div>
     </div>
   );
 };
 
-export default AllTopics;
+export default TopicsPage;

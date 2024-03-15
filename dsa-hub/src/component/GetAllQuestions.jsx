@@ -21,7 +21,7 @@ const GetAllQuestions = ({ user }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [question, setQuestion] = useState("");
   const [link, setlink] = useState("");
-  const [topic, setTopic] = useState("");
+  const [topic, setTopic] = useState("Arrays");
   const [difficulty, setDifficulty] = useState("Easy");
   const navigate = useNavigate();
   const userEmail = user.auth.currentUser.email;
@@ -126,6 +126,7 @@ const GetAllQuestions = ({ user }) => {
       });
       console.log("Document written with ID: ", docRef.id);
       // window.location.reload();
+      
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -135,6 +136,15 @@ const GetAllQuestions = ({ user }) => {
   let easy = getEasy.length;
   let medium = getMedium.length;
   let hard = getHard.length;
+
+  const handleDelete = async (id) => {
+    try {
+      const DsaDoc = doc(db, "dsa", id);
+      await deleteDoc(DsaDoc);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
     const unsubscribeAll = [
@@ -193,15 +203,6 @@ const GetAllQuestions = ({ user }) => {
       unsubscribeAll.forEach((unsubscribe) => unsubscribe());
     };
   }, []);
-
-  const handleDelete = async (id) => {
-    try {
-      const DsaDoc = doc(db, "dsa", id);
-      await deleteDoc(DsaDoc);
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
   return (
     <>
@@ -304,36 +305,39 @@ const GetAllQuestions = ({ user }) => {
                   <option value="Hard">Hard</option>
                 </select>
               </label>
-              <label className="mt-4 block w-full" htmlFor="name">
-  <p className="mb-1 text-sm text-gray-600">Topic</p>
-  <select
-    onChange={(e) => setTopic(e.target.value)}
-    className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
-  >
-    <option value="Arrays">Arrays</option>
-    <option value="Strings">Strings</option>
-    <option value="Linked Lists">Linked Lists</option>
-    <option value="Stacks">Stacks</option>
-    <option value="Queues">Queues</option>
-    <option value="Trees">Trees</option>
-    <option value="Graphs">Graphs</option>
-    <option value="Dynamic Programming">Dynamic Programming</option>
-    <option value="Bit Manipulation">Bit Manipulation</option>
-    <option value="Recursion">Recursion</option>
-    <option value="Sorting">Sorting</option>
-    <option value="Searching">Searching</option>
-    <option value="Hashing">Hashing</option>
-    <option value="Greedy">Greedy</option>
-    <option value="Divide and Conquer">Divide and Conquer</option>
-    <option value="Backtracking">Backtracking</option>
-    <option value="Combinatorial Optimization">Combinatorial Optimization</option>
-    <option value="Mathematics">Mathematics</option>
-    <option value="Geometry">Geometry</option>
-    <option value="Game Theory">Game Theory</option>
-    <option value="Miscellaneous">Miscellaneous</option>
-  </select>
-</label>
-
+              <label className="mt-4 block w-full" >
+                <p className="mb-1 text-sm text-gray-600">Topic</p>
+                <select
+                  onChange={(e) => setTopic(e.target.value)}
+                  className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
+                >
+                  <option value="Arrays">Arrays</option>
+                  <option value="Strings">Strings</option>
+                  <option value="Linked Lists">Linked Lists</option>
+                  <option value="Stacks">Stacks</option>
+                  <option value="Queues">Queues</option>
+                  <option value="Trees">Trees</option>
+                  <option value="Graphs">Graphs</option>
+                  <option value="Dynamic Programming">
+                    Dynamic Programming
+                  </option>
+                  <option value="Bit Manipulation">Bit Manipulation</option>
+                  <option value="Recursion">Recursion</option>
+                  <option value="Sorting">Sorting</option>
+                  <option value="Searching">Searching</option>
+                  <option value="Hashing">Hashing</option>
+                  <option value="Greedy">Greedy</option>
+                  <option value="Divide and Conquer">Divide and Conquer</option>
+                  <option value="Backtracking">Backtracking</option>
+                  <option value="Combinatorial Optimization">
+                    Combinatorial Optimization
+                  </option>
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Geometry">Geometry</option>
+                  <option value="Game Theory">Game Theory</option>
+                  <option value="Miscellaneous">Miscellaneous</option>
+                </select>
+              </label>
 
               <div className="mt-8 flex flex-col justify-center space-y-3 sm:flex-row sm:space-x-3 sm:space-y-0">
                 <button
@@ -348,7 +352,7 @@ const GetAllQuestions = ({ user }) => {
         </div>
       )}
 
-      <div class="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
+      {/* <div class="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
         <div class="flex items-center justify-between pb-6">
           <div>
             <h2 class="font-semibold text-gray-700">All Problems</h2>
@@ -358,7 +362,7 @@ const GetAllQuestions = ({ user }) => {
           </div>
           <div class="flex items-center justify-between">
             <div class="ml-10 space-x-8 lg:ml-40">
-              <select className="rounded-md border m-3 p-1 ">
+              <select   className="rounded-md border m-3 p-1 ">
                 <option value="all">All</option>
                 <option value="easy">Easy</option>
                 <option value="medium">Medium</option>
@@ -429,6 +433,88 @@ const GetAllQuestions = ({ user }) => {
                     </td>
                   </tr>
                 ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div> */}
+
+      <div className="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
+        <div className="flex items-center justify-between pb-6">
+          <div>
+            <h2 className="font-semibold text-gray-700">All Problems</h2>
+            <span className="text-xs text-gray-500">
+              View all problems you solved
+            </span>
+          </div>
+          <div className="flex items-center justify-between"></div>
+        </div>
+        <div className="overflow-y-hidden rounded-lg border">
+          <div className="overflow-x-auto">
+            <table className="w-full">
+              <thead>
+                <tr className="bg-blue-600 text-left text-xs font-semibold uppercase tracking-widest text-white">
+                  <th className="px-5 py-3">Question</th>
+                  <th className="px-5 py-3">Topic</th>
+                  <th className="px-5 py-3">Link</th>
+                  <th className="px-5 py-3">Created At</th>
+                  <th className="px-5 py-3">Actions</th>
+                  <th className="px-5 py-3">Difficulty</th>
+                </tr>
+              </thead>
+              <tbody className="text-gray-500">
+                {questions
+          
+                  .map((question) => (
+                    <tr key={question.id}>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <div className="flex items-center">
+                          <div>
+                            <p className="whitespace-no-wrap">
+                              {question.questions}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <div className="flex items-center">
+                          <div>
+                            <p className="whitespace-no-wrap">
+                              {question.topic}
+                            </p>
+                          </div>
+                        </div>
+                      </td>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <div className="flex items-center">
+                          <a
+                            href={question.Link}
+                            className="whitespace-no-wrap text-blue-600 hover:text-blue-900"
+                          >
+                            Link
+                          </a>
+                        </div>
+                      </td>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <p className="whitespace-no-wrap">{question.time}</p>
+                      </td>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <button
+                          onClick={() => {
+                            handleDelete(question.id);
+                          }}
+                          className="text-red-400 whitespace-no-wrap hover:text-red-600"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                        <span className="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">
+                          {question.difficulty}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
               </tbody>
             </table>
           </div>

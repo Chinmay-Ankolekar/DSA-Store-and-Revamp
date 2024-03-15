@@ -12,6 +12,8 @@ import { useState } from "react";
 import AddQuestions from "./AddQuestions";
 import GetAllQuestions from "./GetAllQuestions";
 import AllTopics from "./AllTopics";
+import Navbar from "./Navbar";
+import EasyQuestions from "./EasyQuestions";
 
 const Dashboard = ({ user }) => {
  let navigate = useNavigate();
@@ -26,11 +28,13 @@ const Dashboard = ({ user }) => {
 
   return (
     <div>
-      <h1>Dashboard</h1>
-      <button onClick={signOutUser}>Logout</button>
+      {/* <h1>Dashboard</h1>
+      <button onClick={signOutUser}>Logout</button> */}
+      <Navbar user={user}/>
       <br />
       {/* <AddQuestions user={user} /> */}
       <GetAllQuestions user={user} />
+      {/* <EasyQuestions user={user} />  */}
       {/* <AllTopics user={user}/> */}
     </div>
   );

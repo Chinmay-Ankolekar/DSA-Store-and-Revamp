@@ -82,7 +82,7 @@ const TopicsPage = ({ user }) => {
              <div className="p-3">
                <div className="pt-1 ">
                  <p className="text-xl font-semibold capitalize">{topic}</p>
-                 <h4 className="text-2xl font-light tracking-tighter xl:text-2xl">
+                 <h4 className="text-2xl font-semibold tracking-tighter xl:text-2xl">
                    Total Solved: {counts.total}
                  </h4>
                </div>
@@ -90,15 +90,15 @@ const TopicsPage = ({ user }) => {
              <hr className="opacity-50" />
              <div className="p-4">
                <p className="font-light">
-                 <span className="text-md font-bold text-green-600">Easy </span>
+                 <span className="text-md font-bold text-green-400">Easy: </span>
                  {counts.easy}
                </p>
                <p className="font-light">
-                 <span className="text-md font-bold text-green-600">Medium </span>
+                 <span className="text-md font-bold text-yellow-400">Medium: </span>
                  {counts.medium}
                </p>
                <p className="font-light">
-                 <span className="text-md font-bold text-green-600">Hard </span>
+                 <span className="text-md font-bold text-red-400">Hard: </span>
                  {counts.hard}
                </p>
              </div>

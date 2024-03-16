@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import GetQuestionsByTopic from './component/GetQuestionsByTopic'
 import TopicsPage from './component/TopicsPage'
 import Profile from './component/Profile'
+import Resource from './component/Resource'
 function App() {
   const [user, setUser] = useState(null);
 
@@ -32,6 +33,7 @@ function App() {
             <Route path={'/topics'} element={<TopicsPage user={user} />} />
             <Route path={'/topics/:topics'} element={<GetQuestionsByTopic user={user} />} />
             <Route path={'/profile'} element={<Profile user={user} />} />
+            <Route path={'/resource'} element={<Resource user={user} />} />
           </>
         ) : (
           <>

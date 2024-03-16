@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, onSnapshot, query, where } from "firebase/firestore";
+import { collection, onSnapshot, query, where,addDoc, doc, getDocs } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
@@ -11,13 +11,74 @@ const Profile = ({user}) => {
     const [getEasy, setGetEasy] = useState([]);
     const [getMedium, setGetMedium] = useState([]);
     const [getHard, setGetHard] = useState([]);
+    const [leetcodeProfile, setLeetcodeProfile] = useState("")
+    const [profile, setProfile] = useState(null);
+    const [totalSolved, setTotalSolved] = useState(0);
+    const [leeteasy, setEasy] = useState(0);
+    const [leetmedium, setMedium] = useState(0);
+    const [leethard, setHard] = useState(0);
 
-  
+    const addLeetcodeProfile = async () => {
+        try {
+          const docRef = await addDoc(collection(db, "leetcodeProfile"), {
+            id: user.auth.currentUser.uid,
+            profile: leetcodeProfile,
+          });
+          console.log("Document written with ID: ", docRef.id);
+          setLeetcodeProfile(""); 
+          alert("Profile added successfully")
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      };
+
+      const fetchData = async () => {
+        try {
+            const res = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${profile.profile}`); 
+            const data = await res.json();
+            console.log(data);
+            console.log(data.totalSolved);
+            console.log(data.matchedUserStats.acSubmissionNum[1].count);
+            console.log(data.matchedUserStats.acSubmissionNum[2].count);
+            console.log(data.matchedUserStats.acSubmissionNum[3].count);
+            setTotalSolved(data.totalSolved);
+            setEasy(data.matchedUserStats.acSubmissionNum[1].count);
+            setMedium(data.matchedUserStats.acSubmissionNum[2].count);
+            setHard(data.matchedUserStats.acSubmissionNum[3].count);
+
+        } catch (error) {
+            console.log(error.message);
+        }
+    }
+
+    useEffect(() => {
+        const fetchProfile = async () => {
+            try {
+                const querySnapshot = await getDocs(
+                    query(collection(db, "leetcodeProfile"), where("id", "==", user.auth.currentUser.uid))
+                );
+                querySnapshot.forEach((doc) => {
+                    setProfile(doc.data());
+                });
+            } catch (e) {
+                console.error("Error getting documents:", e);
+            }
+        };
+    
+        fetchProfile();
+    }, [user.auth.currentUser.uid]);
+    
+    useEffect(() => {
+        if (profile) {
+            fetchData();
+        }
+    }, [profile]);
+    
+ 
     let count = getEasy.length + getMedium.length + getHard.length;
     let easy = getEasy.length;
     let medium = getMedium.length;
     let hard = getHard.length;
-  
   
     useEffect(() => {
       const unsubscribeAll = [
@@ -153,9 +214,33 @@ const Profile = ({user}) => {
           >
             View Topicwise
           </Link>
+          <Link
+            to="/Dashboard"
+            class="text-white bg-blue-600 rounded-lg border-2 px-4 py-2 font-medium focus:outline-none focus:ring"
+          >
+           Dashboard
+          </Link>
          
         </div>
+        
       </div>
+
+
+      <div>
+      <label htmlFor="">Enter LeetCode Profile</label>
+      <input
+        className="border"
+        type="text"
+        value={leetcodeProfile}
+        onChange={(e) => setLeetcodeProfile(e.target.value)}
+      />
+      <button onClick={addLeetcodeProfile}>Submit</button>
+      </div>
+      <h1>Total: {totalSolved}</h1>
+        <h1>Easy questions solved: {leeteasy}</h1>
+        <h1>Medium questions solved: {leetmedium}</h1>
+        <h1>Hard questions solved: {leethard}</h1>
+    
     </> );
 }
  

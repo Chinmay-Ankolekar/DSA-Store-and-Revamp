@@ -342,7 +342,7 @@ const GetAllQuestions = ({ user }) => {
           <p className="text-gray-500">Add questions to view them here</p>
         </div>
       ) : (
-        <div className="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
+        <div className=" mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
           <div className="flex items-center justify-between pb-6">
             <div>
               <h2 className="font-semibold text-gray-700">All Problems</h2>

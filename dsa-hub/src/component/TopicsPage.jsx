@@ -8,6 +8,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db } from "../config/firebase";
+import Navbar from "./Navbar";
 
 const TopicsPage = ({ user }) => {
   const [questions, setQuestions] = useState([]);
@@ -49,30 +50,57 @@ const TopicsPage = ({ user }) => {
     return () => unsubscribe();
   }, []);
 
-  const topics = questions.map((question) => question.topic);
-  const topicCounts = topics.reduce((acc, topic) => {
-    acc[topic] = (acc[topic] || 0) + 1;
+  const topicCounts = questions.reduce((acc, question) => {
+    const { topic, difficulty } = question;
+    acc[topic] = acc[topic] || { total: 0, easy: 0, medium: 0, hard: 0 };
+    acc[topic].total++;
+    if (difficulty === "Easy") {
+      acc[topic].easy++;
+    } else if (difficulty === "Medium") {
+      acc[topic].medium++;
+    } else if (difficulty === "Hard") {
+      acc[topic].hard++;
+    }
     return acc;
   }, {});
 
   return (
-    <div className="container mx-auto ">
-      <h1 className="text-2xl font-bold ">Topics</h1>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-        {Object.entries(topicCounts).map(([topic, count], index) => (
-          <button
-            key={index}
-            onClick={() => {
-              navigate(`/topics/${topic}`);
-            }}
-            className="flex flex-col items-center justify-center h-24 p-2 bg-white shadow-md rounded-lg hover:shadow-lg"
-          >
-            <p className="font-medium text-gray-800">{topic}</p>
-            <p className="text-sm text-gray-600">Total: {count}</p>
-          </button>
-        ))}
+    <>
+    <Navbar/>
+      
+    <div className="flex flex-wrap gap-x-4 gap-y-12 px-4 py-10 lg:px-20">
+  {Object.entries(topicCounts).map(([topic, counts], index) => (
+    <div className="flex w-72" key={index}>
+      <div className="flex w-full max-w-full flex-col break-words rounded-lg border border-gray-100 bg-white text-gray-600 shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+        <div className="p-3">
+          <div className="pt-1 ">
+            <p className="text-xl font-light capitalize">{topic}</p>
+            <h4 className="text-2xl font-semibold tracking-tighter xl:text-2xl">
+              Total Solved: {counts.total}
+            </h4>
+          </div>
+        </div>
+        <hr className="opacity-50" />
+        <div className="p-4">
+          <p className="font-light">
+            <span className="text-md font-bold text-green-600">Easy </span>
+            {counts.easy}
+          </p>
+          <p className="font-light">
+            <span className="text-md font-bold text-green-600">Medium </span>
+            {counts.medium}
+          </p>
+          <p className="font-light">
+            <span className="text-md font-bold text-green-600">Hard </span>
+            {counts.hard}
+          </p>
+        </div>
       </div>
     </div>
+  ))}
+</div>
+
+    </>
   );
 };
 

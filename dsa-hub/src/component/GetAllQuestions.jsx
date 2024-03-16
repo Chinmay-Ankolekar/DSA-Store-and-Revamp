@@ -36,83 +36,6 @@ const GetAllQuestions = ({ user }) => {
     setIsModalOpen(false);
   };
 
-  // const getQuestions = async () => {
-  //   try {
-  //     const querySnapshot = await getDocs(
-  //       query(DsaRef, where("email", "==", userEmail))
-  //     );
-  //     const Questions = querySnapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-
-  //     setQuestions(Questions);
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-  // const getEasyQuestion = async () => {
-  //   try {
-  //     const querySnapshot = await getDocs(
-  //       query(
-  //         DsaRef,
-  //         where("email", "==", userEmail),
-  //         where("difficulty", "==", "Easy"),
-  //       )
-  //     );
-  //     const Questions = querySnapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     setGetEasy(Questions);
-  //     console.log(Questions, "Easy");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-  // const getMediumQuestion = async () => {
-  //   try {
-  //     const querySnapshot = await getDocs(
-  //       query(
-  //         DsaRef,
-  //         where("email", "==", userEmail),
-  //         where("difficulty", "==", "Medium"),
-
-  //       )
-  //     );
-  //     const Questions = querySnapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     setGetMedium(Questions);
-  //     console.log(Questions, "Medium");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
-
-  // const getHardQuestion = async () => {
-  //   try {
-  //     const querySnapshot = await getDocs(
-  //       query(
-  //         DsaRef,
-  //         where("email", "==", userEmail),
-  //         where("difficulty", "==", "Hard"),
-
-  //       )
-  //     );
-  //     const Questions = querySnapshot.docs.map((doc) => ({
-  //       id: doc.id,
-  //       ...doc.data(),
-  //     }));
-  //     setGetHard(Questions);
-  //     console.log(Questions, "Hard");
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
 
   const addQuestion = async () => {
     try {
@@ -126,7 +49,6 @@ const GetAllQuestions = ({ user }) => {
       });
       console.log("Document written with ID: ", docRef.id);
       // window.location.reload();
-      
     } catch (e) {
       console.error("Error adding document: ", e);
     }
@@ -209,11 +131,42 @@ const GetAllQuestions = ({ user }) => {
       <div class="mx-2 my-10 rounded-xl border bg-white px-4 shadow-md sm:mx-auto sm:max-w-xl sm:px-8">
         <div class="mb-2 flex flex-col gap-y-6 border-b py-8 sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-center">
-            <img
-              class="h-14 w-14 rounded-full object-cover"
-              src={user.reloadUserInfo.photoUrl}
-              alt="Simon Lewis"
-            />
+            {user.reloadUserInfo.photoUrl ? (
+              <img
+                className="h-14 w-14 rounded-full object-cover"
+                src={user.reloadUserInfo.photoUrl}
+                alt={user.displayName}
+              />
+            ) : (
+              <span class="inline-block size-[62px] bg-gray-100 rounded-full overflow-hidden">
+                <svg
+                  class="size-full text-gray-300"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="0.62854"
+                    y="0.359985"
+                    width="15"
+                    height="15"
+                    rx="7.5"
+                    fill="white"
+                  />
+                  <path
+                    d="M8.12421 7.20374C9.21151 7.20374 10.093 6.32229 10.093 5.23499C10.093 4.14767 9.21151 3.26624 8.12421 3.26624C7.0369 3.26624 6.15546 4.14767 6.15546 5.23499C6.15546 6.32229 7.0369 7.20374 8.12421 7.20374Z"
+                    fill="currentColor"
+                  />
+                  <path
+                    d="M11.818 10.5975C10.2992 12.6412 7.42106 13.0631 5.37731 11.5537C5.01171 11.2818 4.69296 10.9631 4.42107 10.5975C4.28982 10.4006 4.27107 10.1475 4.37419 9.94123L4.51482 9.65059C4.84296 8.95684 5.53671 8.51624 6.30546 8.51624H9.95231C10.7023 8.51624 11.3867 8.94749 11.7242 9.62249L11.8742 9.93184C11.968 10.1475 11.9586 10.4006 11.818 10.5975Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+            )}
+
             <div class="ml-4 w-56">
               <p class="text-slate-800 text-xl font-extrabold">
                 {user.reloadUserInfo.displayName}
@@ -259,7 +212,7 @@ const GetAllQuestions = ({ user }) => {
         <div className="fixed inset-0 flex items-center justify-center z-50">
           <div className="fixed inset-0 bg-gray-800 bg-opacity-50"></div>
           <div className="relative m-10 max-w-lg rounded-md border bg-white shadow-lg">
-            <p className="mt-4 pl-4 text-xl font-bold">Add new user</p>
+            <p className="mt-4 pl-4 text-xl font-bold">Add Question</p>
             <svg
               onClick={handleCloseModal}
               xmlns="http://www.w3.org/2000/svg"
@@ -282,7 +235,7 @@ const GetAllQuestions = ({ user }) => {
                   onChange={(e) => setQuestion(e.target.value)}
                   className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
                   type="text"
-                  placeholder="Enter name"
+                  placeholder="Enter Question"
                 />
               </label>
               <label className="mt-4 block w-full" htmlFor="name">
@@ -291,11 +244,11 @@ const GetAllQuestions = ({ user }) => {
                   onChange={(e) => setlink(e.target.value)}
                   className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Enter Link"
                 />
               </label>
               <label className="mt-4 block w-full" htmlFor="name">
-                <p className="mb-1 text-sm text-gray-600">Difficulty</p>
+                <p className="mb-1 text-sm text-gray-600">Select Difficulty</p>
                 <select
                   onChange={(e) => setDifficulty(e.target.value)}
                   className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
@@ -305,8 +258,8 @@ const GetAllQuestions = ({ user }) => {
                   <option value="Hard">Hard</option>
                 </select>
               </label>
-              <label className="mt-4 block w-full" >
-                <p className="mb-1 text-sm text-gray-600">Topic</p>
+              <label className="mt-4 block w-full">
+                <p className="mb-1 text-sm text-gray-600">Select Topic</p>
                 <select
                   onChange={(e) => setTopic(e.target.value)}
                   className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
@@ -352,120 +305,39 @@ const GetAllQuestions = ({ user }) => {
         </div>
       )}
 
-      {/* <div class="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
-        <div class="flex items-center justify-between pb-6">
-          <div>
-            <h2 class="font-semibold text-gray-700">All Problems</h2>
-            <span class="text-xs text-gray-500">
-              View all problems you solved
-            </span>
-          </div>
-          <div class="flex items-center justify-between">
-            <div class="ml-10 space-x-8 lg:ml-40">
-              <select   className="rounded-md border m-3 p-1 ">
-                <option value="all">All</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-              </select>
+      {questions.length === 0 ? (
+        <div className="text-center">
+          <h1 className="text-2xl font-semibold text-gray-700 mb-4">
+            No Questions found
+          </h1>
+          <p className="text-gray-500">Add questions to view them here</p>
+        </div>
+      ) : (
+        <div className="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
+          <div className="flex items-center justify-between pb-6">
+            <div>
+              <h2 className="font-semibold text-gray-700">All Problems</h2>
+              <span className="text-xs text-gray-500">
+                View all problems you solved
+              </span>
             </div>
+            <div className="flex items-center justify-between"></div>
           </div>
-        </div>
-        <div class="overflow-y-hidden rounded-lg border">
-          <div class="overflow-x-auto">
-            <table class="w-full">
-              <thead>
-                <tr class="bg-blue-600 text-left text-xs font-semibold uppercase tracking-widest text-white">
-                  <th class="px-5 py-3">Question</th>
-                  <th class="px-5 py-3">Topic</th>
-                  <th class="px-5 py-3">Link</th>
-                  <th class="px-5 py-3">Created At</th>
-
-                  <th class="px-5 py-3">Actions</th>
-                  <th class="px-5 py-3">Difficulty</th>
-                </tr>
-              </thead>
-              <tbody class="text-gray-500">
-                {questions.map((question) => (
-                  <tr>
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <div class="flex items-center">
-                        <div class="">
-                          <p class="whitespace-no-wrap">{question.questions}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <div class="flex items-center">
-                        <div class="">
-                          <p class="whitespace-no-wrap">{question.topic}</p>
-                        </div>
-                      </div>
-                    </td>
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <div class="flex items-center">
-                        <a
-                          href={question.Link}
-                          class="whitespace-no-wrap text-blue-600 hover:text-blue-900"
-                        >
-                          Link
-                        </a>
-                      </div>
-                    </td>
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <p class="whitespace-no-wrap">{question.time}</p>
-                    </td>
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <button
-                        onClick={() => {
-                          handleDelete(question.id);
-                        }}
-                        class="text-red-400 whitespace-no-wrap hover:text-red-600"
-                      >
-                        Delete
-                      </button>
-                    </td>
-
-                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                      <span class="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">
-                        {question.difficulty}
-                      </span>
-                    </td>
+          <div className="overflow-y-hidden rounded-lg border">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-blue-600 text-left text-xs font-semibold uppercase tracking-widest text-white">
+                    <th className="px-5 py-3">Question</th>
+                    <th className="px-5 py-3">Topic</th>
+                    <th className="px-5 py-3">Link</th>
+                    <th className="px-5 py-3">Created At</th>
+                    <th className="px-5 py-3">Actions</th>
+                    <th className="px-5 py-3">Difficulty</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div> */}
-
-      <div className="mx-auto max-w-screen-lg px-4 py-8 sm:px-8">
-        <div className="flex items-center justify-between pb-6">
-          <div>
-            <h2 className="font-semibold text-gray-700">All Problems</h2>
-            <span className="text-xs text-gray-500">
-              View all problems you solved
-            </span>
-          </div>
-          <div className="flex items-center justify-between"></div>
-        </div>
-        <div className="overflow-y-hidden rounded-lg border">
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="bg-blue-600 text-left text-xs font-semibold uppercase tracking-widest text-white">
-                  <th className="px-5 py-3">Question</th>
-                  <th className="px-5 py-3">Topic</th>
-                  <th className="px-5 py-3">Link</th>
-                  <th className="px-5 py-3">Created At</th>
-                  <th className="px-5 py-3">Actions</th>
-                  <th className="px-5 py-3">Difficulty</th>
-                </tr>
-              </thead>
-              <tbody className="text-gray-500">
-                {questions
-          
-                  .map((question) => (
+                </thead>
+                <tbody className="text-gray-500">
+                  {questions.map((question) => (
                     <tr key={question.id}>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                         <div className="flex items-center">
@@ -509,17 +381,28 @@ const GetAllQuestions = ({ user }) => {
                         </button>
                       </td>
                       <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                        <span className="rounded-full bg-green-200 px-3 py-1 text-xs font-semibold text-green-900">
+                        <span
+                          className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                            question.difficulty === "Easy"
+                              ? "bg-green-200 text-green-900"
+                              : question.difficulty === "Medium"
+                              ? "bg-yellow-200 text-yellow-900"
+                              : question.difficulty === "Hard"
+                              ? "bg-red-200 text-red-900"
+                              : ""
+                          }`}
+                        >
                           {question.difficulty}
                         </span>
                       </td>
                     </tr>
                   ))}
-              </tbody>
-            </table>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

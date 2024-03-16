@@ -15,7 +15,7 @@ const Navbar = ({user}) => {
 
     return ( 
         <>
-        <header class="text-slate-700 container relative mx-auto flex flex-col overflow-hidden px-4 py-4 lg:flex-row lg:items-center">
+        <header class="text-slate-700 container relative  flex flex-col overflow-hidden px-4 py-4 lg:flex-row lg:items-center">
   <a href="#" class="flex items-center whitespace-nowrap text-2xl font-black">
     <span class="mr-2 w-8">
       <img src="/images/JOJj79gp_Djhwdp_ZOKLL.png" alt="" />

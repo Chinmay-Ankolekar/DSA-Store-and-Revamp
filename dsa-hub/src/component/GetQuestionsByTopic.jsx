@@ -11,7 +11,6 @@ import {
 } from "firebase/firestore";
 import { db } from "../config/firebase";
 import { useNavigate, Link } from "react-router-dom";
-import AddQuestions from "./AddQuestions";
 import { Timestamp } from "firebase/firestore";
 import Navbar from "./Navbar";
 import { useParams } from "react-router-dom";

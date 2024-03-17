@@ -98,11 +98,7 @@ const HardQuestions = ({ user }) => {
                             </a>
                           </div>
                         </td>
-                        {/* <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <p className="whitespace-no-wrap">
-          {formatDate(question.time)}
-        </p>
-      </td> */}
+                        
                         <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                           <button
                             onClick={() => {

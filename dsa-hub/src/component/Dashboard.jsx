@@ -28,14 +28,11 @@ const Dashboard = ({ user }) => {
 
   return (
     <div>
-      {/* <h1>Dashboard</h1>
-      <button onClick={signOutUser}>Logout</button> */}
+    
       <Navbar user={user}/>
       <br />
-      {/* <AddQuestions user={user} /> */}
       <GetAllQuestions user={user} />
       <EasyQuestions user={user} /> 
-      {/* <AllTopics user={user}/> */}
       <MediumQuestions user={user}/>
       <HardQuestions user={user}/>
     </div>

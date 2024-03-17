@@ -152,9 +152,10 @@ const GetAllQuestions = ({ user }) => {
     <>
       <div class="mx-auto my-10 grid max-w-screen-xl grid-cols-1 px-2 text-blue-800 sm:px-20 lg:grid-cols-3">
         <div class="col-span-1 flex flex-col justify-center text-center sm:text-left md:pr-10">
-          <h1 class="mb-6 text-4xl">Things you'll learn</h1>
+          <h1 class="mb-6 text-4xl">Store and Revamp</h1>
           <p class="text-blue-900">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero.
+            "DSA Store and Revamp" implies a platform for storing and revising
+            solved DSA questions
           </p>
           <div class="my-5">
             <button
@@ -187,7 +188,7 @@ const GetAllQuestions = ({ user }) => {
               to="/topics"
               class="ml-1 mt-4 rounded-lg border-2 border-blue-700 px-6 py-2 font-medium text-blue-700 transition hover:translate-y-1"
             >
-              View Topicwise
+              View Topics
             </Link>
           </div>
         </div>
@@ -294,15 +295,18 @@ const GetAllQuestions = ({ user }) => {
                   className="w-full rounded-md border bg-white py-2 px-2 outline-none ring-blue-600 focus:ring-1"
                 >
                   <option value="Arrays">Arrays</option>
+                  <option value="Two Pointer">Two Pointer</option>
+                  <option value="Sliding window">Sliding window</option>
                   <option value="Strings">Strings</option>
+                  <option value="Binary search">Binary search</option>
                   <option value="Linked Lists">Linked Lists</option>
                   <option value="Stacks">Stacks</option>
                   <option value="Queues">Queues</option>
+                  <option value="Heap/Priority Queues">Queues</option>
                   <option value="Trees">Trees</option>
+                  <option value="Tries">Tries</option>
                   <option value="Graphs">Graphs</option>
-                  <option value="Dynamic Programming">
-                    Dynamic Programming
-                  </option>
+
                   <option value="Bit Manipulation">Bit Manipulation</option>
                   <option value="Recursion">Recursion</option>
                   <option value="Sorting">Sorting</option>
@@ -311,11 +315,15 @@ const GetAllQuestions = ({ user }) => {
                   <option value="Greedy">Greedy</option>
                   <option value="Divide and Conquer">Divide and Conquer</option>
                   <option value="Backtracking">Backtracking</option>
+                  <option value="Dynamic programming">
+                    Dynamic Programming
+                  </option>
                   <option value="Combinatorial Optimization">
                     Combinatorial Optimization
                   </option>
                   <option value="Mathematics">Mathematics</option>
                   <option value="Geometry">Geometry</option>
+                  <option value="Bit manipulation">Bit Manipulation</option>
                   <option value="Game Theory">Game Theory</option>
                   <option value="Miscellaneous">Miscellaneous</option>
                 </select>
@@ -393,6 +401,7 @@ const GetAllQuestions = ({ user }) => {
                           <div className="flex items-center">
                             <a
                               href={question.Link}
+                              target="_blank"
                               className="whitespace-no-wrap text-blue-600 hover:text-blue-900"
                             >
                               Link

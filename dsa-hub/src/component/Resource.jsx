@@ -18,7 +18,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://whimsical.com/object-oriented-programming-cheatsheet-by-love-babbar-YbSgLatbWQ4R5paV7EgqFw"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -50,7 +51,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://whimsical.com/operating-system-cheatsheet-by-love-babbar-S9tuWBCSQfzoBRF5EDNinQ"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -82,7 +84,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://whimsical.com/networking-cheatsheet-by-love-babbar-FcLExFDezehhfsbDPfZDBv"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -114,7 +117,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://whimsical.com/dbms-roadmap-by-love-babbar-FmUi8ffVop33t3MmpVxPCo@2Ux7TurymNdWnQfYXcnP"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -156,7 +160,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://drive.google.com/drive/folders/1XGI3YnWEviwJ3MryCH2f7dhlN9tnYTzh"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -188,7 +193,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://drive.google.com/file/d/1kksqpGT_YBQsFwsyVyftikPRP-sZZF-e/view"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -220,7 +226,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://drive.google.com/drive/folders/1XGI3YnWEviwJ3MryCH2f7dhlN9tnYTzh"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">
@@ -252,7 +259,8 @@ const Resource = ({ user }) => {
                     <li class="mb-4 w-full text-left">
                       <a
                         class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
-                        href="#"
+                        href="https://drive.google.com/file/d/1y3KKghRhQjKfbWhvLipMOCCemKd_XdTm/view"
+                        target="_blank"
                       >
                         <div class="mr-3 flex-shrink-0 text-blue-600">
                           <div class="h-8 w-8 text-3xl">

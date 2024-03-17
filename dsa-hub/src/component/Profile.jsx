@@ -1,148 +1,157 @@
 import React, { useEffect, useState } from "react";
-import { collection, onSnapshot, query, where,addDoc, doc, getDocs } from "firebase/firestore";
+import {
+  collection,
+  onSnapshot,
+  query,
+  where,
+  addDoc,
+  doc,
+  getDocs,
+} from "firebase/firestore";
 import { db } from "../config/firebase";
 import { Link } from "react-router-dom";
 import Navbar from "./Navbar";
 
-const Profile = ({user}) => {
-    const DsaRef = collection(db, "dsa");
-    const userEmail = user.auth.currentUser.email;
-    const [questions, setQuestions] = useState([]);
-    const [getEasy, setGetEasy] = useState([]);
-    const [getMedium, setGetMedium] = useState([]);
-    const [getHard, setGetHard] = useState([]);
-    const [leetcodeProfile, setLeetcodeProfile] = useState("")
-    const [profile, setProfile] = useState(null);
-    const [totalSolved, setTotalSolved] = useState(0);
-    const [leeteasy, setEasy] = useState(0);
-    const [leetmedium, setMedium] = useState(0);
-    const [leethard, setHard] = useState(0);
+const Profile = ({ user }) => {
+  const DsaRef = collection(db, "dsa");
+  const userEmail = user.auth.currentUser.email;
+  const [questions, setQuestions] = useState([]);
+  const [getEasy, setGetEasy] = useState([]);
+  const [getMedium, setGetMedium] = useState([]);
+  const [getHard, setGetHard] = useState([]);
+  const [leetcodeProfile, setLeetcodeProfile] = useState("");
+  const [profile, setProfile] = useState(null);
+  const [totalSolved, setTotalSolved] = useState(0);
+  const [leeteasy, setEasy] = useState(0);
+  const [leetmedium, setMedium] = useState(0);
+  const [leethard, setHard] = useState(0);
 
-    const addLeetcodeProfile = async () => {
-        try {
-          const docRef = await addDoc(collection(db, "leetcodeProfile"), {
-            id: user.auth.currentUser.uid,
-            profile: leetcodeProfile,
-          });
-          console.log("Document written with ID: ", docRef.id);
-          setLeetcodeProfile(""); 
-          alert("Profile added successfully")
-        } catch (e) {
-          console.error("Error adding document: ", e);
-        }
-      };
-
-      const fetchData = async () => {
-        try {
-            const res = await fetch(`https://leetcode-api-faisalshohag.vercel.app/${profile.profile}`); 
-            const data = await res.json();
-            console.log(data);
-            console.log(data.totalSolved);
-            console.log(data.matchedUserStats.acSubmissionNum[1].count);
-            console.log(data.matchedUserStats.acSubmissionNum[2].count);
-            console.log(data.matchedUserStats.acSubmissionNum[3].count);
-            setTotalSolved(data.totalSolved);
-            setEasy(data.matchedUserStats.acSubmissionNum[1].count);
-            setMedium(data.matchedUserStats.acSubmissionNum[2].count);
-            setHard(data.matchedUserStats.acSubmissionNum[3].count);
-
-        } catch (error) {
-            console.log(error.message);
-        }
+  const addLeetcodeProfile = async () => {
+    try {
+      const docRef = await addDoc(collection(db, "leetcodeProfile"), {
+        id: user.auth.currentUser.uid,
+        profile: leetcodeProfile,
+      });
+      console.log("Document written with ID: ", docRef.id);
+      setLeetcodeProfile("");
+      alert("Profile added successfully");
+    } catch (e) {
+      console.error("Error adding document: ", e);
     }
+  };
 
-    useEffect(() => {
-        const fetchProfile = async () => {
-            try {
-                const querySnapshot = await getDocs(
-                    query(collection(db, "leetcodeProfile"), where("id", "==", user.auth.currentUser.uid))
-                );
-                querySnapshot.forEach((doc) => {
-                    setProfile(doc.data());
-                });
-            } catch (e) {
-                console.error("Error getting documents:", e);
-            }
-        };
-    
-        fetchProfile();
-    }, [user.auth.currentUser.uid]);
-    
-    useEffect(() => {
-        if (profile) {
-            fetchData();
-        }
-    }, [profile]);
-    
- 
-    let count = getEasy.length + getMedium.length + getHard.length;
-    let easy = getEasy.length;
-    let medium = getMedium.length;
-    let hard = getHard.length;
-  
-    useEffect(() => {
-      const unsubscribeAll = [
-        onSnapshot(query(DsaRef, where("email", "==", userEmail)), (snapshot) => {
+  const fetchData = async () => {
+    try {
+      const res = await fetch(
+        `https://leetcode-api-faisalshohag.vercel.app/${profile}`
+      );
+      const data = await res.json();
+      console.log(data);
+      console.log(data.totalSolved);
+      console.log(data.matchedUserStats.acSubmissionNum[1].count);
+      console.log(data.matchedUserStats.acSubmissionNum[2].count);
+      console.log(data.matchedUserStats.acSubmissionNum[3].count);
+      setTotalSolved(data.totalSolved);
+      setEasy(data.matchedUserStats.acSubmissionNum[1].count);
+      setMedium(data.matchedUserStats.acSubmissionNum[2].count);
+      setHard(data.matchedUserStats.acSubmissionNum[3].count);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const querySnapshot = await getDocs(
+          query(
+            collection(db, "leetcodeProfile"),
+            where("id", "==", user.auth.currentUser.uid)
+          )
+        );
+        querySnapshot.forEach((doc) => {
+          setProfile(doc.data());
+        });
+      } catch (e) {
+        console.error("Error getting documents:", e);
+      }
+    };
+
+    fetchProfile();
+  }, [user.auth.currentUser.uid]);
+
+  useEffect(() => {
+    if (profile) {
+      fetchData();
+    }
+  }, [profile]);
+
+  let count = getEasy.length + getMedium.length + getHard.length;
+  let easy = getEasy.length;
+  let medium = getMedium.length;
+  let hard = getHard.length;
+
+  useEffect(() => {
+    const unsubscribeAll = [
+      onSnapshot(query(DsaRef, where("email", "==", userEmail)), (snapshot) => {
+        const updatedQuestions = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setQuestions(updatedQuestions);
+      }),
+      onSnapshot(
+        query(
+          DsaRef,
+          where("email", "==", userEmail),
+          where("difficulty", "==", "Easy")
+        ),
+        (snapshot) => {
           const updatedQuestions = snapshot.docs.map((doc) => ({
             id: doc.id,
             ...doc.data(),
           }));
-          setQuestions(updatedQuestions);
-        }),
-        onSnapshot(
-          query(
-            DsaRef,
-            where("email", "==", userEmail),
-            where("difficulty", "==", "Easy")
-          ),
-          (snapshot) => {
-            const updatedQuestions = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-            setGetEasy(updatedQuestions);
-          }
+          setGetEasy(updatedQuestions);
+        }
+      ),
+      onSnapshot(
+        query(
+          DsaRef,
+          where("email", "==", userEmail),
+          where("difficulty", "==", "Medium")
         ),
-        onSnapshot(
-          query(
-            DsaRef,
-            where("email", "==", userEmail),
-            where("difficulty", "==", "Medium")
-          ),
-          (snapshot) => {
-            const updatedQuestions = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-            setGetMedium(updatedQuestions);
-          }
+        (snapshot) => {
+          const updatedQuestions = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setGetMedium(updatedQuestions);
+        }
+      ),
+      onSnapshot(
+        query(
+          DsaRef,
+          where("email", "==", userEmail),
+          where("difficulty", "==", "Hard")
         ),
-        onSnapshot(
-          query(
-            DsaRef,
-            where("email", "==", userEmail),
-            where("difficulty", "==", "Hard")
-          ),
-          (snapshot) => {
-            const updatedQuestions = snapshot.docs.map((doc) => ({
-              id: doc.id,
-              ...doc.data(),
-            }));
-            setGetHard(updatedQuestions);
-          }
-        ),
-      ];
-  
-      return () => {
-        unsubscribeAll.forEach((unsubscribe) => unsubscribe());
-      };
-    }, []);
-;
+        (snapshot) => {
+          const updatedQuestions = snapshot.docs.map((doc) => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+          setGetHard(updatedQuestions);
+        }
+      ),
+    ];
 
-
-    return ( <>
-    <Navbar/>
-<div class="mx-2 my-10 rounded-xl border bg-white px-4 shadow-md sm:mx-auto sm:max-w-xl sm:px-8">
+    return () => {
+      unsubscribeAll.forEach((unsubscribe) => unsubscribe());
+    };
+  }, []);
+  return (
+    <>
+      <Navbar />
+      <div class="mx-2 my-10 rounded-xl border bg-white px-4 shadow-md sm:mx-auto sm:max-w-xl sm:px-8">
         <div class="mb-2 flex flex-col gap-y-6 border-b py-8 sm:flex-row sm:items-center sm:justify-between">
           <div class="flex items-center">
             {user.reloadUserInfo.photoUrl ? (
@@ -218,30 +227,12 @@ const Profile = ({user}) => {
             to="/Dashboard"
             class="text-white bg-blue-600 rounded-lg border-2 px-4 py-2 font-medium focus:outline-none focus:ring"
           >
-           Dashboard
+            Dashboard
           </Link>
-         
         </div>
-        
       </div>
+    </>
+  );
+};
 
-
-      <div>
-      <label htmlFor="">Enter LeetCode Profile</label>
-      <input
-        className="border"
-        type="text"
-        value={leetcodeProfile}
-        onChange={(e) => setLeetcodeProfile(e.target.value)}
-      />
-      <button onClick={addLeetcodeProfile}>Submit</button>
-      </div>
-      <h1>Total: {totalSolved}</h1>
-        <h1>Easy questions solved: {leeteasy}</h1>
-        <h1>Medium questions solved: {leetmedium}</h1>
-        <h1>Hard questions solved: {leethard}</h1>
-    
-    </> );
-}
- 
 export default Profile;

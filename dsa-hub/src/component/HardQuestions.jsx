@@ -65,71 +65,71 @@ const HardQuestions = ({ user }) => {
                   </tr>
                 </thead>
                 <tbody className="text-gray-500">
-                {questions
-  .slice()
-  .sort((a, b) => b.time.toMillis() - a.time.toMillis())
-  .map((question) => (
-    <tr key={question.id}>
-      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <div className="flex items-center">
-          <div>
-            <p className="whitespace-no-wrap">
-              {question.questions}
-            </p>
-          </div>
-        </div>
-      </td>
-      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <div className="flex items-center">
-          <div>
-            <p className="whitespace-no-wrap">
-              {question.topic}
-            </p>
-          </div>
-        </div>
-      </td>
-      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <div className="flex items-center">
-          <a
-            href={question.Link}
-            className="whitespace-no-wrap text-blue-600 hover:text-blue-900"
-          >
-            Link
-          </a>
-        </div>
-      </td>
-      {/* <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                  {questions
+                    .slice()
+                    .sort((a, b) => b.time.toMillis() - a.time.toMillis())
+                    .map((question) => (
+                      <tr key={question.id}>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <div className="flex items-center">
+                            <div>
+                              <p className="whitespace-no-wrap">
+                                {question.questions}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <div className="flex items-center">
+                            <div>
+                              <p className="whitespace-no-wrap">
+                                {question.topic}
+                              </p>
+                            </div>
+                          </div>
+                        </td>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <div className="flex items-center">
+                            <a
+                              href={question.Link}
+                              className="whitespace-no-wrap text-blue-600 hover:text-blue-900"
+                            >
+                              Link
+                            </a>
+                          </div>
+                        </td>
+                        {/* <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
         <p className="whitespace-no-wrap">
           {formatDate(question.time)}
         </p>
       </td> */}
-      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <button
-          onClick={() => {
-            handleDelete(question.id);
-          }}
-          className="text-red-400 whitespace-no-wrap hover:text-red-600"
-        >
-          Delete
-        </button>
-      </td>
-      <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-        <span
-          className={`rounded-full px-3 py-1 text-xs font-semibold ${
-            question.difficulty === "Easy"
-              ? "bg-green-200 text-green-900"
-              : question.difficulty === "Medium"
-              ? "bg-yellow-200 text-yellow-900"
-              : question.difficulty === "Hard"
-              ? "bg-red-200 text-red-900"
-              : ""
-          }`}
-        >
-          {question.difficulty}
-        </span>
-      </td>
-    </tr>
-  ))}
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <button
+                            onClick={() => {
+                              handleDelete(question.id);
+                            }}
+                            className="text-red-400 whitespace-no-wrap hover:text-red-600"
+                          >
+                            Delete
+                          </button>
+                        </td>
+                        <td className="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                          <span
+                            className={`rounded-full px-3 py-1 text-xs font-semibold ${
+                              question.difficulty === "Easy"
+                                ? "bg-green-200 text-green-900"
+                                : question.difficulty === "Medium"
+                                ? "bg-yellow-200 text-yellow-900"
+                                : question.difficulty === "Hard"
+                                ? "bg-red-200 text-red-900"
+                                : ""
+                            }`}
+                          >
+                            {question.difficulty}
+                          </span>
+                        </td>
+                      </tr>
+                    ))}
                 </tbody>
               </table>
             </div>

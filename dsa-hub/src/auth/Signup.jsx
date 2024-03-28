@@ -97,7 +97,7 @@ const Signup = () => {
               type="text"
               id="name"
               className="w-full flex-1 appearance-none border-blue-300 bg-white px-4 py-2 text-base text-gray-700 placeholder-gray-400 focus:outline-none"
-              placeholder="Enter your name"
+              placeholder="Name"
               onChange={(e) => setName(e.target.value)}
             />
           </div>

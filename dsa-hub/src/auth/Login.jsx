@@ -43,7 +43,7 @@ const Login = ({ user }) => {
             Revamp
           </span>
           <span className="">
-            Have account?{" "}
+          Don't have an account?{" "}
             <Link
               to="/signup"
               className="font-medium text-blue-600 hover:underline"

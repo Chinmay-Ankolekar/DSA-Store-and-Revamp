@@ -294,7 +294,7 @@ const GetAllQuestions = ({ user }) => {
                   onClick={addQuestion}
                   className="whitespace-nowrap rounded-md bg-blue-500 px-4 py-3 font-medium text-white"
                 >
-                  Add User
+                  Add Question
                 </button>
               </div>
             </div>

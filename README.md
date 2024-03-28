@@ -1,6 +1,6 @@
 # DSA Store and Revamp
 
-DSA Store and Revamp is a web application that allows you to store links to Data Structures and Algorithms (DSA) questions you've solved, track the number of problems you've solved, and access placement resources for OS, OPS, CN, and DBMS.
+DSA Store and Revamp is a web application that allows you to store links to Data Structures and Algorithms (DSA) questions you've solved, track the number of problems you've solved, and access placement resources for OS, OOPS, CN, and DBMS.
 
 ## Features
 
@@ -18,4 +18,5 @@ DSA Store and Revamp is a web application that allows you to store links to Data
 ## Project URL
 
 [Visit DSA Store Revamp](https://dsahub-8012c.web.app/)
+
 

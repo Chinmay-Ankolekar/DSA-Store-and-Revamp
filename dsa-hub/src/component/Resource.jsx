@@ -292,6 +292,265 @@ const Resource = ({ user }) => {
                   </ul>
                 </div>
               </div>
+
+              <div class="w-full py-6 pr-12 pl-3 sm:pl-6 sm:pr-24 lg:w-1/2 lg:px-12">
+                <div>
+                  <div class="font-mono text-2xl text-orange-600">DSA</div>
+                  <h6 class="mt-6 mb-8 font-sans text-xl font-bold text-blue-700 sm:text-3xl">
+                    DSA Practice Sheets
+                  </h6>
+                  <ul class="mt-2">
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://bit.ly/StriversA2ZDSACourseSheet "
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Strivers A-Z sheets
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://takeuforward.org/interviews/strivers-sde-sheet-top-coding-interview-problems"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Strivers SDE Sheet
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://leetcode.com/studyplan/top-interview-150/"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Leetcode Top 150
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://drive.google.com/file/d/1FMdN_OCfOI0iAeDlqswCiC2DZzD4nPsb/view"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Love Babars DSA Sheet
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://www.naukri.com/code360/problem-lists/ninjas-sde-sheet"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Ninjas SDE sheet
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+              <div class="w-full py-6 pr-12 pl-3 sm:pl-6 sm:pr-24 lg:w-1/2 lg:px-12">
+                <div>
+                  <div class="font-mono text-2xl text-orange-600">SQL </div>
+                  <h6 class="mt-6 mb-8 font-sans text-xl font-bold text-blue-700 sm:text-3xl">
+                    SQL Queries
+                  </h6>
+                  <ul class="mt-2">
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://leetcode.com/studyplan/top-sql-50/"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Leet-code top 50
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://www.hackerrank.com/domains/sql"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Hackerank SQL
+                        </div>
+                      </a>
+                    </li>
+                    <li class="mb-4 w-full text-left">
+                      <a
+                        class="flex cursor-pointer items-center text-blue-700 hover:text-orange-600"
+                        href="https://www.studocu.com/in/document/indraprastha-institute-of-information-technology-delhi/computer-engineering/sql-notes-by-apna-college/67361254"
+                        target="_blank"
+                      >
+                        <div class="mr-3 flex-shrink-0 text-blue-600">
+                          <div class="h-8 w-8 text-3xl">
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              aria-hidden="true"
+                              role="img"
+                              width="1em"
+                              height="1em"
+                              preserveAspectRatio="xMidYMid meet"
+                              viewBox="0 0 32 32"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M4 4v24h24V4H4zm14 16H8v-2h10v2zm0-6H8v-2h10v2zm6 6H14v-2h10v2zm0-6H14v-2h10v2z"
+                              />
+                            </svg>
+                          </div>
+                        </div>
+                        <div class="shadow-xs font-mono text-2xl underline underline-offset-4">
+                          Apna College
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+
+
+
             </div>
           </div>
         </div>
